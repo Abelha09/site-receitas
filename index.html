@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Receita de Bolo de Chocolate</title>
+  <title>Bolo de Chocolate</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -13,38 +13,67 @@
       <p class="subtitulo">Simples, fofinho e delicioso!</p>
     </header>
 
-    <img 
-      src="https://images.unsplash.com/photo-1605478309631-3618f56a4fbe?auto=format&fit=crop&w=900&q=80" 
-      alt="Bolo de chocolate" 
-      class="imagem-receita"
-    />
+    <div class="busca-receitas">
+      <input
+        type="text"
+        id="campo-busca"
+        placeholder="🔍 Buscar receita..."
+        autocomplete="off"
+      />
+    </div>
 
-    <section>
-      <h2>📋 Ingredientes</h2>
-      <ul>
-        <li>2 xícaras de farinha de trigo</li>
-        <li>1 xícara de açúcar</li>
-        <li>1 xícara de chocolate em pó</li>
-        <li>3 ovos</li>
-        <li>1 xícara de leite</li>
-        <li>1 colher de sopa de fermento</li>
-      </ul>
-    </section>
+    <div class="card-receita">
+      <img 
+        src="https://images.unsplash.com/photo-1605478309631-3618f56a4fbe?auto=format&fit=crop&w=900&q=80" 
+        alt="Bolo de chocolate" 
+        class="imagem-receita"
+      />
 
-    <section>
-      <h2>👩‍🍳 Modo de Preparo</h2>
-      <ol>
-        <li>Pré-aqueça o forno a 180°C.</li>
-        <li>Misture todos os ingredientes em uma tigela.</li>
-        <li>Despeje em uma forma untada.</li>
-        <li>Asse por cerca de 40 minutos.</li>
-      </ol>
-    </section>
+      <section>
+        <h2>📋 Ingredientes</h2>
+        <ul>
+          <li>2 xícaras de farinha de trigo</li>
+          <li>1 xícara de açúcar</li>
+          <li>1 xícara de chocolate em pó</li>
+          <li>3 ovos</li>
+          <li>1 xícara de leite</li>
+          <li>1 colher de sopa de fermento</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>👩‍🍳 Modo de Preparo</h2>
+        <ol>
+          <li>Pré-aqueça o forno a 180°C.</li>
+          <li>Misture todos os ingredientes em uma tigela.</li>
+          <li>Despeje em uma forma untada.</li>
+          <li>Asse por cerca de 40 minutos.</li>
+        </ol>
+      </section>
+    </div>
 
     <footer>
-      <p>Feito por <strong>Bárbara Abelha 🐝</strong> | <a href="https://github.com/Abelha09" target="_blank">GitHub</a></p>
+      <p>Feito por 🐝• <a href="https://github.com/Abelha09" target="_blank">GitHub</a></p>
     </footer>
   </div>
+
+  <script>
+    const inputBusca = document.getElementById('campo-busca');
+    const receitas = document.querySelectorAll('.card-receita');
+
+    inputBusca.addEventListener('input', () => {
+      const textoBusca = inputBusca.value.toLowerCase();
+
+      receitas.forEach(card => {
+        const textoCard = card.textContent.toLowerCase();
+        if (textoCard.includes(textoBusca)) {
+          card.style.display = '';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    });
+  </script>
 </body>
 </html>
 
