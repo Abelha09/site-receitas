@@ -1,33 +1,64 @@
 body {
-  font-family: Arial, sans-serif;
-  margin: 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background-color: #fff8f0;
+  margin: 0;
+  padding: 0;
   color: #333;
 }
 
-header {
-  background-color: #ffb6b9;
+.container {
+  max-width: 700px;
+  margin: auto;
   padding: 20px;
+}
+
+header {
   text-align: center;
+  background-color: #ffb6b9;
+  padding: 30px 10px;
   border-radius: 10px;
+  color: #fff;
 }
 
 h1 {
   margin: 0;
-  color: #fff;
+}
+
+.subtitulo {
+  font-style: italic;
+  margin-top: 10px;
+}
+
+.imagem-receita {
+  width: 100%;
+  border-radius: 10px;
+  margin-top: 20px;
 }
 
 section {
-  margin-top: 30px;
+  margin-top: 40px;
+}
+
+h2 {
+  color: #a0522d;
+  border-bottom: 2px solid #ffb6b9;
+  padding-bottom: 5px;
 }
 
 ul, ol {
+  margin-top: 10px;
   padding-left: 20px;
+  line-height: 1.6;
 }
 
 footer {
-  margin-top: 40px;
   text-align: center;
+  margin-top: 50px;
   font-size: 0.9em;
   color: #777;
+}
+
+footer a {
+  color: #a0522d;
+  text-decoration: none;
 }
