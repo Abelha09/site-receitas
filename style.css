@@ -1,64 +1,82 @@
-body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #fff8f0;
+/* Importa uma fonte bonita do Google */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap');
+
+* {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #fef9f4;
   color: #333;
+  line-height: 1.6;
+  padding: 20px;
 }
 
 .container {
-  max-width: 700px;
-  margin: auto;
-  padding: 20px;
+  max-width: 800px;
+  margin: 0 auto;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  padding: 30px;
 }
 
 header {
   text-align: center;
-  background-color: #ffb6b9;
-  padding: 30px 10px;
-  border-radius: 10px;
-  color: #fff;
+  margin-bottom: 20px;
 }
 
 h1 {
-  margin: 0;
+  font-size: 2rem;
+  color: #5e2b2b;
 }
 
 .subtitulo {
-  font-style: italic;
-  margin-top: 10px;
+  font-size: 1.1rem;
+  color: #888;
 }
 
 .imagem-receita {
   width: 100%;
-  border-radius: 10px;
-  margin-top: 20px;
+  height: auto;
+  border-radius: 12px;
+  margin: 20px 0;
 }
 
 section {
-  margin-top: 40px;
+  margin-top: 30px;
 }
 
 h2 {
-  color: #a0522d;
-  border-bottom: 2px solid #ffb6b9;
-  padding-bottom: 5px;
+  color: #4a1e1e;
+  margin-bottom: 10px;
+  font-size: 1.4rem;
 }
 
 ul, ol {
-  margin-top: 10px;
   padding-left: 20px;
-  line-height: 1.6;
+  margin-top: 10px;
+}
+
+li {
+  margin-bottom: 8px;
 }
 
 footer {
   text-align: center;
-  margin-top: 50px;
-  font-size: 0.9em;
-  color: #777;
+  margin-top: 40px;
+  font-size: 0.9rem;
+  color: #666;
 }
 
 footer a {
-  color: #a0522d;
+  color: #8a4baf;
   text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;
 }
