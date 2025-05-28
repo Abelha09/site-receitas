@@ -1,4 +1,3 @@
-/* Importa uma fonte bonita do Google */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap');
 
 * {
@@ -39,11 +38,39 @@ h1 {
   color: #888;
 }
 
+.busca-receitas {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.busca-receitas input {
+  width: 90%;
+  max-width: 400px;
+  padding: 10px 15px;
+  font-size: 1rem;
+  border: 2px solid #5e2b2b;
+  border-radius: 12px;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.busca-receitas input:focus {
+  border-color: #8a4baf;
+}
+
 .imagem-receita {
   width: 100%;
   height: auto;
   border-radius: 12px;
   margin: 20px 0;
+}
+
+.card-receita {
+  background-color: #faf5f1;
+  padding: 20px;
+  border-radius: 14px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  margin-bottom: 30px;
 }
 
 section {
