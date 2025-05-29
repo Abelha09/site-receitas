@@ -4,252 +4,43 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Receitas Brasileiras</title>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet" />
-  <style>
-    /* Estilos gerais */
-    :root {
-      --bg-light: #fdfdfd;
-      --text-dark: #333;
-      --primary: #ff7043;
-      --secondary: #ffe0b2;
-      --card-radius: 1rem;
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: 'Montserrat', sans-serif;
-    }
-
-    body {
-      background-color: var(--bg-light);
-      color: var(--text-dark);
-      line-height: 1.6;
-      padding: 1rem;
-    }
-
-    header {
-      background: var(--primary);
-      padding: 1rem;
-      text-align: center;
-      color: white;
-      border-radius: var(--card-radius);
-      margin-bottom: 2rem;
-    }
-
-    header h1 {
-      font-size: 2rem;
-    }
-
-    /* Controles de busca */
-    #search-bar {
-      width: 100%;
-      max-width: 400px;
-      margin: 0 auto 2rem auto;
-      display: flex;
-    }
-
-    #search-bar input {
-      flex: 1;
-      padding: 0.75rem 1rem;
-      font-size: 1rem;
-      border: 2px solid var(--primary);
-      border-radius: var(--card-radius) 0 0 var(--card-radius);
-      outline: none;
-      transition: border-color 0.3s;
-    }
-
-    #search-bar input:focus {
-      border-color: #e64a19;
-    }
-
-    #search-bar button {
-      background: var(--primary);
-      color: white;
-      border: none;
-      padding: 0 1.5rem;
-      font-weight: 700;
-      font-size: 1rem;
-      border-radius: 0 var(--card-radius) var(--card-radius) 0;
-      cursor: pointer;
-      transition: background 0.3s;
-    }
-
-    #search-bar button:hover {
-      background: #e64a19;
-    }
-
-    /* Grid das receitas */
-    #recipes-container {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2rem;
-      max-width: 1100px;
-      margin: 0 auto;
-    }
-
-    .recipe-card {
-      background: white;
-      border-radius: var(--card-radius);
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      padding: 1rem;
-      transition: transform 0.2s, box-shadow 0.3s;
-      cursor: default;
-    }
-
-    .recipe-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 6px 15px rgba(0,0,0,0.15);
-    }
-
-    .recipe-card img {
-      width: 100%;
-      height: 180px;
-      object-fit: cover;
-      border-radius: var(--card-radius);
-      margin-bottom: 1rem;
-    }
-
-    .recipe-card h2 {
-      font-size: 1.3rem;
-      margin-bottom: 0.5rem;
-      color: var(--primary);
-    }
-
-    .recipe-card p {
-      font-size: 1rem;
-      color: #555;
-    }
-
-    footer {
-      text-align: center;
-      margin-top: 3rem;
-      color: #888;
-    }
-
-    /* Responsividade */
-    @media (max-width: 600px) {
-      header h1 {
-        font-size: 1.5rem;
-      }
-      #search-bar {
-        flex-direction: column;
-      }
-      #search-bar input, #search-bar button {
-        border-radius: var(--card-radius);
-        width: 100%;
-      }
-      #search-bar button {
-        margin-top: 0.5rem;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+  <header>
+    <h1>Receitas Brasileiras</h1>
+    <button class="toggle-dark-mode" id="darkModeToggle">Modo Escuro</button>
+  </header>
 
-<header>
-  <h1>Receitas Brasileiras</h1>
-</header>
+  <main>
+    <div class="controls">
+      <input type="text" id="searchInput" placeholder="Busque uma receita..." />
+      <button id="searchButton">Buscar</button>
+    </div>
 
-<div id="search-bar">
-  <input type="text" id="search-input" placeholder="Buscar receita..." />
-  <button id="search-btn">Buscar</button>
-</div>
+    <div id="recipesGrid" class="recipes-grid">
+      <!-- Cards de receitas serão inseridos aqui -->
+    </div>
+  </main>
 
-<section id="recipes-container">
-  <!-- Receitas serão inseridas aqui via JS -->
-</section>
+  <div id="modal" class="modal" style="display:none;">
+    <div class="modal-content">
+      <span class="close" id="modalClose">&times;</span>
+      <img id="modalImage" src="" alt="Imagem da receita" />
+      <h2 id="modalTitle"></h2>
+      <h3>Ingredientes</h3>
+      <ul id="modalIngredients"></ul>
+      <h3>Modo de preparo</h3>
+      <p id="modalInstructions"></p>
+      <a id="modalSourceUrl" href="#" target="_blank" rel="noopener noreferrer">Fonte da receita</a>
+    </div>
+  </div>
 
-<footer>
-  <p>© 2025 Receitas Brasileiras - Desenvolvido por Você</p>
-</footer>
+  <footer class="footer">
+    &copy; 2025 Receitas Brasileiras
+  </footer>
 
-<script>
-  // Receitas brasileiras para exibir
-  const receitas = [
-    {
-      titulo: "Feijoada Completa",
-      descricao: "Tradicional prato brasileiro com feijão preto, carnes defumadas e acompanhamentos.",
-      imagem: "https://images.unsplash.com/photo-1613145999459-c2dfca0d5f36?auto=format&fit=crop&w=800&q=80"
-    },
-    {
-      titulo: "Pão de Queijo Mineiro",
-      descricao: "Deliciosos pães de queijo quentinhos, crocantes por fora e macios por dentro.",
-      imagem: "https://images.unsplash.com/photo-1579445918263-56b0d4e0f0c9?auto=format&fit=crop&w=800&q=80"
-    },
-    {
-      titulo: "Brigadeiro",
-      descricao: "O doce mais amado do Brasil, feito com leite condensado, chocolate e granulado.",
-      imagem: "https://images.unsplash.com/photo-1613145999464-2a1e1f4d67bb?auto=format&fit=crop&w=800&q=80"
-    },
-    {
-      titulo: "Moqueca Baiana",
-      descricao: "Prato à base de peixe, leite de coco, azeite de dendê e temperos típicos da Bahia.",
-      imagem: "https://images.unsplash.com/photo-1613145999471-6a8d5d7b6a5b?auto=format&fit=crop&w=800&q=80"
-    },
-    {
-      titulo: "Coxinha de Frango",
-      descricao: "Salgadinho frito recheado com frango cremoso, muito popular nas festas brasileiras.",
-      imagem: "https://images.unsplash.com/photo-1588167104893-28b5ef03c7c1?auto=format&fit=crop&w=800&q=80"
-    }
-  ];
-
-  const container = document.getElementById('recipes-container');
-  const searchInput = document.getElementById('search-input');
-  const searchBtn = document.getElementById('search-btn');
-
-  // Função para mostrar receitas no container
-  function mostrarReceitas(lista) {
-    container.innerHTML = '';
-
-    if (lista.length === 0) {
-      container.innerHTML = '<p>Nenhuma receita encontrada.</p>';
-      return;
-    }
-
-    lista.forEach(receita => {
-      const card = document.createElement('article');
-      card.classList.add('recipe-card');
-
-      card.innerHTML = `
-        <img src="${receita.imagem}" alt="${receita.titulo}" />
-        <h2>${receita.titulo}</h2>
-        <p>${receita.descricao}</p>
-      `;
-
-      container.appendChild(card);
-    });
-  }
-
-  // Inicializa mostrando todas as receitas
-  mostrarReceitas(receitas);
-
-  // Função de busca simples
-  function buscarReceitas() {
-    const termo = searchInput.value.toLowerCase().trim();
-
-    if (!termo) {
-      mostrarReceitas(receitas);
-      return;
-    }
-
-    const filtradas = receitas.filter(r => 
-      r.titulo.toLowerCase().includes(termo) || 
-      r.descricao.toLowerCase().includes(termo)
-    );
-
-    mostrarReceitas(filtradas);
-  }
-
-  // Eventos
-  searchBtn.addEventListener('click', buscarReceitas);
-  searchInput.addEventListener('keydown', e => {
-    if (e.key === 'Enter') {
-      buscarReceitas();
-    }
-  });
-</script>
-
+  <script src="scripts.js"></script>
 </body>
 </html>
+
