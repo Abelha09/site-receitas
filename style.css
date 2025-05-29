@@ -1,15 +1,14 @@
-/* styles.css */
-
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap');
 
 :root {
   --bg-light: #fdfdfd;
-  --bg-dark: #1e1e1e;
+  --bg-dark: #121212;
   --text-light: #333;
-  --text-dark: #fdfdfd;
+  --text-dark: #f0f0f0;
   --primary: #ff7043;
   --secondary: #ffe0b2;
   --card-radius: 1rem;
+  --shadow: rgba(0, 0, 0, 0.1);
 }
 
 * {
@@ -23,7 +22,10 @@ body {
   background-color: var(--bg-light);
   color: var(--text-light);
   line-height: 1.6;
-  transition: background 0.3s, color 0.3s;
+  transition: background 0.3s ease, color 0.3s ease;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 body.dark-mode {
@@ -33,17 +35,46 @@ body.dark-mode {
 
 header {
   background: var(--primary);
-  padding: 1rem;
+  padding: 1.5rem;
   text-align: center;
   color: white;
+  box-shadow: 0 2px 8px var(--shadow);
 }
 
 header h1 {
-  font-size: 2rem;
+  font-size: 2.5rem;
+  font-weight: 700;
 }
 
 main {
+  flex-grow: 1;
   padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.controls {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.controls input {
+  width: 100%;
+  max-width: 400px;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  border: 2px solid var(--primary);
+  border-radius: 0.5rem;
+  transition: border-color 0.3s;
+}
+
+.controls input:focus {
+  outline: none;
+  border-color: #ff5722;
+}
+
+#recipes-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 2rem;
@@ -52,81 +83,48 @@ main {
 .recipe-card {
   background: white;
   border-radius: var(--card-radius);
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 10px var(--shadow);
   padding: 1rem;
-  transition: transform 0.2s, box-shadow 0.3s;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
 }
 
 .recipe-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+  transform: translateY(-6px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.15);
 }
 
 .recipe-card img {
   width: 100%;
+  height: 180px;
   border-radius: var(--card-radius);
   object-fit: cover;
   margin-bottom: 1rem;
 }
 
 .recipe-card h2 {
-  font-size: 1.25rem;
+  font-size: 1.4rem;
   margin-bottom: 0.5rem;
+  color: var(--primary);
 }
 
 .recipe-card p {
-  font-size: 0.95rem;
+  font-size: 1rem;
+  flex-grow: 1;
+  color: #555;
 }
 
 .footer {
-  text-align: center;
+  background: var(--primary);
+  color: white;
   padding: 1rem;
-  background: var(--primary);
-  color: white;
-  margin-top: 2rem;
+  text-align: center;
+  font-weight: 600;
+  box-shadow: 0 -2px 8px var(--shadow);
 }
 
-/* Search and Filters */
-.controls {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1rem;
-  margin-bottom: 2rem;
-}
-
-.controls input,
-.controls select {
-  padding: 0.5rem 1rem;
-  font-size: 1rem;
-  border-radius: 0.5rem;
-  border: 1px solid #ccc;
-  width: 100%;
-  max-width: 300px;
-}
-
-/* Scroll to top */
-#scrollTopBtn {
-  position: fixed;
-  bottom: 30px;
-  right: 30px;
-  background: var(--primary);
-  color: white;
-  padding: 0.6rem 1rem;
-  border: none;
-  border-radius: 50%;
-  font-size: 1.2rem;
-  cursor: pointer;
-  display: none;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  z-index: 1000;
-}
-
-#scrollTopBtn:hover {
-  background: #e64a19;
-}
-
-/* Dark mode toggle */
 .toggle-dark-mode {
   position: fixed;
   top: 1rem;
@@ -137,16 +135,49 @@ main {
   border: none;
   border-radius: 0.5rem;
   cursor: pointer;
-  font-weight: 600;
+  font-weight: 700;
   z-index: 1000;
+  box-shadow: 0 2px 6px var(--shadow);
+  transition: background-color 0.3s ease;
 }
+
+.toggle-dark-mode:hover {
+  background-color: #e64a19;
+}
+
+body.dark-mode .recipe-card {
+  background: #222;
+  color: var(--text-dark);
+  box-shadow: 0 4px 12px rgba(255, 112, 67, 0.3);
+}
+
+body.dark-mode .recipe-card h2 {
+  color: var(--secondary);
+}
+
+body.dark-mode .controls input {
+  background: #333;
+  color: var(--text-dark);
+  border-color: #ff7043;
+}
+
+body.dark-mode .controls input::placeholder {
+  color: #ccc;
+}
+
+body.dark-mode header,
+body.dark-mode .footer {
+  background: #ff7043;
+}
+
+/* Responsividade */
 
 @media (max-width: 600px) {
   header h1 {
-    font-size: 1.5rem;
+    font-size: 1.8rem;
   }
 
-  .controls {
-    flex-direction: column;
+  .controls input {
+    max-width: 100%;
   }
 }
