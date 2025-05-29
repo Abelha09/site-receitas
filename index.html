@@ -1,42 +1,41 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Coleção deliciosa de receitas para todos os gostos e ocasiões!">
-  <meta property="og:title" content="Receitas Deliciosas" />
-  <meta property="og:description" content="Descubra e compartilhe receitas incríveis com facilidade!" />
-  <meta property="og:image" content="/capa-site.png" />
+  <meta name="description" content="Site de Receitas Interativo e Responsivo" />
+  <meta name="keywords" content="receitas, culinária, cozinha, pratos, sobremesas" />
+  <meta name="author" content="Abelha09" />
   <title>Receitas Deliciosas</title>
   <link rel="stylesheet" href="styles.css" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
-  <script src="https://kit.fontawesome.com/a2b86e6c5f.js" crossorigin="anonymous"></script>
 </head>
 <body>
+  <button class="toggle-dark-mode" id="toggleDarkMode">Modo Escuro</button>
+
   <header>
-    <nav class="navbar">
-      <div class="logo">Receitas Deliciosas</div>
-      <button id="toggle-theme"><i class="fas fa-adjust"></i></button>
-    </nav>
+    <h1>Receitas Deliciosas</h1>
   </header>
-  <main>
-    <section class="search-bar">
-      <input type="text" id="search" placeholder="Buscar receita..." />
-    </section>
-    <section class="categories">
-      <button data-category="todos">Todos</button>
-      <button data-category="doces">Doces</button>
-      <button data-category="salgados">Salgados</button>
-      <button data-category="rápidas">Rápidas</button>
-    </section>
-    <section id="receitas-container" class="grid"></section>
-    <button id="scrollTop" title="Voltar ao topo"><i class="fas fa-chevron-up"></i></button>
+
+  <section class="controls">
+    <input type="text" id="searchInput" placeholder="Buscar receita..." />
+    <select id="categoryFilter">
+      <option value="">Todas as Categorias</option>
+      <option value="sobremesa">Sobremesas</option>
+      <option value="salgado">Salgados</option>
+      <option value="vegano">Vegano</option>
+    </select>
+  </section>
+
+  <main id="recipesContainer">
+    <!-- Cards de receita serão inseridos aqui via JS -->
   </main>
-  <footer>
-    <p>&copy; 2025 Receitas Deliciosas</p>
+
+  <footer class="footer">
+    <p>© 2025 Abelha 🐝. Todos os direitos reservados.</p>
   </footer>
-  <script src="script.js"></script>
+
+  <button id="scrollTopBtn" title="Voltar ao topo">↑</button>
+
+  <script src="script.js" defer></script>
 </body>
 </html>
