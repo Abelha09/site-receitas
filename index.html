@@ -9,23 +9,23 @@
 <body>
   <header>
     <h1>Receitas Brasileiras</h1>
-    <button class="toggle-dark-mode" id="darkModeToggle">Modo Escuro</button>
+    <button class="toggle-dark-mode" id="darkModeToggle" aria-pressed="false" aria-label="Alternar modo escuro">Modo Escuro</button>
   </header>
 
   <main>
-    <div class="controls">
-      <input type="text" id="searchInput" placeholder="Busque uma receita..." />
-      <button id="searchButton">Buscar</button>
-    </div>
+    <form class="controls" id="searchForm" role="search" aria-label="Busca de receitas">
+      <input type="text" id="searchInput" placeholder="Busque uma receita..." aria-label="Campo para busca de receitas" />
+      <button type="submit" id="searchButton">Buscar</button>
+    </form>
 
-    <div id="recipesGrid" class="recipes-grid">
+    <section id="recipesGrid" class="recipes-grid" aria-live="polite" aria-relevant="additions">
       <!-- Cards de receitas serão inseridos aqui -->
-    </div>
+    </section>
   </main>
 
-  <div id="modal" class="modal" style="display:none;">
+  <div id="modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-describedby="modalInstructions" hidden>
     <div class="modal-content">
-      <span class="close" id="modalClose">&times;</span>
+      <button class="close" id="modalClose" aria-label="Fechar modal">&times;</button>
       <img id="modalImage" src="" alt="Imagem da receita" />
       <h2 id="modalTitle"></h2>
       <h3>Ingredientes</h3>
@@ -36,11 +36,10 @@
     </div>
   </div>
 
-  <footer class="footer">
+  <footer class="footer" role="contentinfo">
     &copy; 2025 Receitas Brasileiras
   </footer>
 
   <script src="scripts.js"></script>
 </body>
 </html>
-
