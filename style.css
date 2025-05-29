@@ -1,109 +1,152 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap');
+/* styles.css */
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap');
+
+:root {
+  --bg-light: #fdfdfd;
+  --bg-dark: #1e1e1e;
+  --text-light: #333;
+  --text-dark: #fdfdfd;
+  --primary: #ff7043;
+  --secondary: #ffe0b2;
+  --card-radius: 1rem;
+}
 
 * {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
 }
 
 body {
-  font-family: 'Poppins', sans-serif;
-  background-color: #fef9f4;
-  color: #333;
+  background-color: var(--bg-light);
+  color: var(--text-light);
   line-height: 1.6;
-  padding: 20px;
+  transition: background 0.3s, color 0.3s;
 }
 
-.container {
-  max-width: 800px;
-  margin: 0 auto;
-  background: #fff;
-  border-radius: 16px;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-  padding: 30px;
+body.dark-mode {
+  background-color: var(--bg-dark);
+  color: var(--text-dark);
 }
 
 header {
+  background: var(--primary);
+  padding: 1rem;
   text-align: center;
-  margin-bottom: 20px;
+  color: white;
 }
 
-h1 {
+header h1 {
   font-size: 2rem;
-  color: #5e2b2b;
 }
 
-.subtitulo {
-  font-size: 1.1rem;
-  color: #888;
+main {
+  padding: 2rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
 }
 
-.busca-receitas {
-  margin-bottom: 20px;
-  text-align: center;
+.recipe-card {
+  background: white;
+  border-radius: var(--card-radius);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+  transition: transform 0.2s, box-shadow 0.3s;
 }
 
-.busca-receitas input {
-  width: 90%;
-  max-width: 400px;
-  padding: 10px 15px;
-  font-size: 1rem;
-  border: 2px solid #5e2b2b;
-  border-radius: 12px;
-  outline: none;
-  transition: border-color 0.3s ease;
+.recipe-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
 }
 
-.busca-receitas input:focus {
-  border-color: #8a4baf;
-}
-
-.imagem-receita {
+.recipe-card img {
   width: 100%;
-  height: auto;
-  border-radius: 12px;
-  margin: 20px 0;
+  border-radius: var(--card-radius);
+  object-fit: cover;
+  margin-bottom: 1rem;
 }
 
-.card-receita {
-  background-color: #faf5f1;
-  padding: 20px;
-  border-radius: 14px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-  margin-bottom: 30px;
+.recipe-card h2 {
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
 }
 
-section {
-  margin-top: 30px;
+.recipe-card p {
+  font-size: 0.95rem;
 }
 
-h2 {
-  color: #4a1e1e;
-  margin-bottom: 10px;
-  font-size: 1.4rem;
-}
-
-ul, ol {
-  padding-left: 20px;
-  margin-top: 10px;
-}
-
-li {
-  margin-bottom: 8px;
-}
-
-footer {
+.footer {
   text-align: center;
-  margin-top: 40px;
-  font-size: 0.9rem;
-  color: #666;
+  padding: 1rem;
+  background: var(--primary);
+  color: white;
+  margin-top: 2rem;
 }
 
-footer a {
-  color: #8a4baf;
-  text-decoration: none;
+/* Search and Filters */
+.controls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
 }
 
-footer a:hover {
-  text-decoration: underline;
+.controls input,
+.controls select {
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  border-radius: 0.5rem;
+  border: 1px solid #ccc;
+  width: 100%;
+  max-width: 300px;
+}
+
+/* Scroll to top */
+#scrollTopBtn {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background: var(--primary);
+  color: white;
+  padding: 0.6rem 1rem;
+  border: none;
+  border-radius: 50%;
+  font-size: 1.2rem;
+  cursor: pointer;
+  display: none;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+}
+
+#scrollTopBtn:hover {
+  background: #e64a19;
+}
+
+/* Dark mode toggle */
+.toggle-dark-mode {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  background: var(--primary);
+  color: white;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  font-weight: 600;
+  z-index: 1000;
+}
+
+@media (max-width: 600px) {
+  header h1 {
+    font-size: 1.5rem;
+  }
+
+  .controls {
+    flex-direction: column;
+  }
 }
