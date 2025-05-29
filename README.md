@@ -1,6 +1,6 @@
 # 🍽️ Site de Receitas
 
-Este projeto é uma página simples de receitas, feita com **HTML5** e **CSS3**, com foco em estrutura semântica e responsividade.
+Este projeto é uma página simples de receitas, feita com **HTML5**, **CSS3** e **Javascript**, com foco em estrutura semântica e responsividade.
 
 ## 🌟 Objetivos
 - Praticar marcação HTML com uso correto de tags semânticas
