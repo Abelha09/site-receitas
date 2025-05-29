@@ -1,79 +1,42 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Bolo de Chocolate</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta name="description" content="Coleção deliciosa de receitas para todos os gostos e ocasiões!">
+  <meta property="og:title" content="Receitas Deliciosas" />
+  <meta property="og:description" content="Descubra e compartilhe receitas incríveis com facilidade!" />
+  <meta property="og:image" content="/capa-site.png" />
+  <title>Receitas Deliciosas</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/a2b86e6c5f.js" crossorigin="anonymous"></script>
 </head>
 <body>
-  <div class="container">
-    <header>
-      <h1>🍫 Receita de Bolo de Chocolate</h1>
-      <p class="subtitulo">Simples, fofinho e delicioso!</p>
-    </header>
-
-    <div class="busca-receitas">
-      <input
-        type="text"
-        id="campo-busca"
-        placeholder="🔍 Buscar receita..."
-        autocomplete="off"
-      />
-    </div>
-
-    <div class="card-receita">
-      <img 
-        src="https://moinhoglobo.com.br/wp-content/uploads/2019/03/08-bolo-chocolate-640x427.png" 
-        alt="Bolo de chocolate" 
-        class="imagem-receita"
-      />
-
-      <section>
-        <h2>📋 Ingredientes</h2>
-        <ul>
-          <li>2 xícaras de farinha de trigo</li>
-          <li>1 xícara de açúcar</li>
-          <li>1 xícara de chocolate em pó</li>
-          <li>3 ovos</li>
-          <li>1 xícara de leite</li>
-          <li>1 colher de sopa de fermento</li>
-        </ul>
-      </section>
-
-      <section>
-        <h2>👩‍🍳 Modo de Preparo</h2>
-        <ol>
-          <li>Pré-aqueça o forno a 180°C.</li>
-          <li>Misture todos os ingredientes em uma tigela.</li>
-          <li>Despeje em uma forma untada.</li>
-          <li>Asse por cerca de 40 minutos.</li>
-        </ol>
-      </section>
-    </div>
-
-    <footer>
-      <p>Feito por 🐝• <a href="https://github.com/Abelha09" target="_blank">GitHub</a></p>
-    </footer>
-  </div>
-
-  <script>
-    const inputBusca = document.getElementById('campo-busca');
-    const receitas = document.querySelectorAll('.card-receita');
-
-    inputBusca.addEventListener('input', () => {
-      const textoBusca = inputBusca.value.toLowerCase();
-
-      receitas.forEach(card => {
-        const textoCard = card.textContent.toLowerCase();
-        if (textoCard.includes(textoBusca)) {
-          card.style.display = '';
-        } else {
-          card.style.display = 'none';
-        }
-      });
-    });
-  </script>
+  <header>
+    <nav class="navbar">
+      <div class="logo">Receitas Deliciosas</div>
+      <button id="toggle-theme"><i class="fas fa-adjust"></i></button>
+    </nav>
+  </header>
+  <main>
+    <section class="search-bar">
+      <input type="text" id="search" placeholder="Buscar receita..." />
+    </section>
+    <section class="categories">
+      <button data-category="todos">Todos</button>
+      <button data-category="doces">Doces</button>
+      <button data-category="salgados">Salgados</button>
+      <button data-category="rápidas">Rápidas</button>
+    </section>
+    <section id="receitas-container" class="grid"></section>
+    <button id="scrollTop" title="Voltar ao topo"><i class="fas fa-chevron-up"></i></button>
+  </main>
+  <footer>
+    <p>&copy; 2025 Receitas Deliciosas</p>
+  </footer>
+  <script src="script.js"></script>
 </body>
 </html>
-
