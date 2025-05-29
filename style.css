@@ -1,183 +1,111 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap');
-
 :root {
-  --bg-light: #fdfdfd;
-  --bg-dark: #121212;
-  --text-light: #333;
-  --text-dark: #f0f0f0;
-  --primary: #ff7043;
-  --secondary: #ffe0b2;
+  --bg-light: #fafafa;
+  --text-dark: #222;
+  --primary: #d84315;
+  --secondary: #ffccbc;
   --card-radius: 1rem;
-  --shadow: rgba(0, 0, 0, 0.1);
 }
-
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
   font-family: 'Montserrat', sans-serif;
 }
-
 body {
-  background-color: var(--bg-light);
-  color: var(--text-light);
-  line-height: 1.6;
-  transition: background 0.3s ease, color 0.3s ease;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
-
-body.dark-mode {
-  background-color: var(--bg-dark);
+  background: var(--bg-light);
   color: var(--text-dark);
+  padding: 1rem;
 }
-
 header {
   background: var(--primary);
-  padding: 1.5rem;
+  padding: 1rem;
   text-align: center;
   color: white;
-  box-shadow: 0 2px 8px var(--shadow);
-}
-
-header h1 {
-  font-size: 2.5rem;
-  font-weight: 700;
-}
-
-main {
-  flex-grow: 1;
-  padding: 2rem;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.controls {
-  display: flex;
-  justify-content: center;
+  border-radius: var(--card-radius);
   margin-bottom: 2rem;
 }
-
-.controls input {
-  width: 100%;
-  max-width: 400px;
+header h1 {
+  font-size: 2rem;
+}
+#search-bar {
+  max-width: 450px;
+  margin: 0 auto 2rem auto;
+  display: flex;
+  box-shadow: 0 2px 8px rgb(0 0 0 / 0.1);
+  border-radius: var(--card-radius);
+  overflow: hidden;
+}
+#search-input {
+  flex: 1;
   padding: 0.75rem 1rem;
+  border: none;
   font-size: 1rem;
-  border: 2px solid var(--primary);
-  border-radius: 0.5rem;
-  transition: border-color 0.3s;
+  outline-offset: 2px;
 }
-
-.controls input:focus {
-  outline: none;
-  border-color: #ff5722;
+#search-btn {
+  background: var(--primary);
+  border: none;
+  color: white;
+  font-weight: 700;
+  cursor: pointer;
+  padding: 0 1.5rem;
+  transition: background-color 0.3s ease;
 }
-
+#search-btn:hover {
+  background: #bf360c;
+}
 #recipes-container {
+  max-width: 1100px;
+  margin: 0 auto;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 2rem;
 }
-
 .recipe-card {
   background: white;
   border-radius: var(--card-radius);
-  box-shadow: 0 4px 10px var(--shadow);
+  box-shadow: 0 4px 12px rgb(0 0 0 / 0.1);
   padding: 1rem;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  cursor: pointer;
-  display: flex;
-  flex-direction: column;
+  cursor: default;
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
 }
-
 .recipe-card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+  box-shadow: 0 8px 18px rgb(0 0 0 / 0.15);
 }
-
 .recipe-card img {
   width: 100%;
   height: 180px;
-  border-radius: var(--card-radius);
   object-fit: cover;
+  border-radius: var(--card-radius);
   margin-bottom: 1rem;
 }
-
 .recipe-card h2 {
-  font-size: 1.4rem;
-  margin-bottom: 0.5rem;
   color: var(--primary);
+  margin-bottom: 0.5rem;
+  font-size: 1.3rem;
 }
-
 .recipe-card p {
-  font-size: 1rem;
-  flex-grow: 1;
   color: #555;
+  font-size: 1rem;
+  line-height: 1.3;
 }
-
-.footer {
-  background: var(--primary);
-  color: white;
-  padding: 1rem;
+footer {
   text-align: center;
-  font-weight: 600;
-  box-shadow: 0 -2px 8px var(--shadow);
+  margin-top: 3rem;
+  color: #888;
+  font-size: 0.9rem;
 }
-
-.toggle-dark-mode {
-  position: fixed;
-  top: 1rem;
-  right: 1rem;
-  background: var(--primary);
-  color: white;
-  padding: 0.5rem 1rem;
-  border: none;
-  border-radius: 0.5rem;
-  cursor: pointer;
-  font-weight: 700;
-  z-index: 1000;
-  box-shadow: 0 2px 6px var(--shadow);
-  transition: background-color 0.3s ease;
-}
-
-.toggle-dark-mode:hover {
-  background-color: #e64a19;
-}
-
-body.dark-mode .recipe-card {
-  background: #222;
-  color: var(--text-dark);
-  box-shadow: 0 4px 12px rgba(255, 112, 67, 0.3);
-}
-
-body.dark-mode .recipe-card h2 {
-  color: var(--secondary);
-}
-
-body.dark-mode .controls input {
-  background: #333;
-  color: var(--text-dark);
-  border-color: #ff7043;
-}
-
-body.dark-mode .controls input::placeholder {
-  color: #ccc;
-}
-
-body.dark-mode header,
-body.dark-mode .footer {
-  background: #ff7043;
-}
-
-/* Responsividade */
-
 @media (max-width: 600px) {
   header h1 {
-    font-size: 1.8rem;
+    font-size: 1.5rem;
   }
-
-  .controls input {
-    max-width: 100%;
+  #search-bar {
+    flex-direction: column;
+  }
+  #search-btn {
+    border-radius: 0 0 var(--card-radius) var(--card-radius);
+    padding: 0.75rem;
   }
 }
+
