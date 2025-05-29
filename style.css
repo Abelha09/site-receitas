@@ -22,10 +22,12 @@ body {
   background-color: var(--bg-light);
   color: var(--text-light);
   line-height: 1.6;
-  transition: background 0.3s, color 0.3s;
+  transition: background-color 0.4s ease, color 0.4s ease;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 body.dark-mode {
@@ -39,6 +41,8 @@ header {
   text-align: center;
   color: var(--text-dark);
   position: relative;
+  box-shadow: 0 2px 8px rgba(247, 140, 160, 0.4);
+  user-select: none;
 }
 
 header h1 {
@@ -57,11 +61,14 @@ header h1 {
   padding: 0.4rem 0.8rem;
   cursor: pointer;
   font-weight: 600;
-  transition: background 0.3s;
+  transition: background-color 0.3s ease;
+  box-shadow: 0 2px 6px rgba(244, 143, 177, 0.6);
 }
 
-.toggle-dark-mode:hover {
+.toggle-dark-mode:hover,
+.toggle-dark-mode:focus {
   background: #d81b60;
+  outline: none;
 }
 
 main {
@@ -69,6 +76,7 @@ main {
   flex-grow: 1;
   max-width: 1200px;
   margin: 0 auto;
+  width: 100%;
 }
 
 .controls {
@@ -83,14 +91,15 @@ main {
   padding: 0.6rem 1rem;
   font-size: 1rem;
   border-radius: 0.5rem;
-  border: 1px solid var(--secondary);
+  border: 1.5px solid var(--secondary);
   width: 250px;
-  transition: border-color 0.3s;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .controls input:focus {
   outline: none;
   border-color: var(--accent);
+  box-shadow: 0 0 5px var(--accent);
 }
 
 .controls button {
@@ -101,11 +110,14 @@ main {
   padding: 0.6rem 1.2rem;
   font-weight: 600;
   cursor: pointer;
-  transition: background 0.3s;
+  transition: background-color 0.3s ease;
+  box-shadow: 0 2px 6px rgba(244, 143, 177, 0.6);
 }
 
-.controls button:hover {
+.controls button:hover,
+.controls button:focus {
   background: #d81b60;
+  outline: none;
 }
 
 .recipes-grid {
@@ -115,7 +127,7 @@ main {
 }
 
 .recipe-card {
-  background: white;
+  background: var(--bg-light);
   border-radius: var(--card-radius);
   box-shadow: 0 4px 12px rgba(247, 140, 160, 0.3);
   overflow: hidden;
@@ -124,9 +136,16 @@ main {
   flex-direction: column;
 }
 
-.recipe-card:hover {
+body.dark-mode .recipe-card {
+  background: #4b3a41;
+  box-shadow: 0 4px 12px rgba(244, 143, 177, 0.5);
+}
+
+.recipe-card:hover,
+.recipe-card:focus-within {
   transform: translateY(-6px);
   box-shadow: 0 8px 20px rgba(247, 140, 160, 0.45);
+  outline: none;
 }
 
 .recipe-card img {
@@ -165,11 +184,14 @@ main {
   padding: 0.5rem 1rem;
   font-weight: 600;
   cursor: pointer;
-  transition: background 0.3s;
+  transition: background-color 0.3s ease;
+  box-shadow: 0 2px 5px rgba(244, 143, 177, 0.6);
 }
 
-.recipe-card button:hover {
+.recipe-card button:hover,
+.recipe-card button:focus {
   background: #d81b60;
+  outline: none;
 }
 
 .footer {
@@ -179,6 +201,7 @@ main {
   color: var(--text-dark);
   font-weight: 600;
   margin-top: auto;
+  user-select: none;
 }
 
 .modal {
@@ -193,6 +216,14 @@ main {
   align-items: center;
   z-index: 9999;
   padding: 1rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.modal.show {
+  opacity: 1;
+  pointer-events: auto;
 }
 
 .modal-content {
@@ -206,7 +237,7 @@ main {
   overflow-y: auto;
   position: relative;
   box-shadow: 0 8px 20px rgba(0,0,0,0.25);
-  transition: background 0.3s, color 0.3s;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 body.dark-mode .modal-content {
@@ -251,11 +282,15 @@ body.dark-mode .modal-content {
   font-weight: 700;
   color: var(--secondary);
   cursor: pointer;
-  transition: color 0.3s;
+  transition: color 0.3s ease;
+  background: transparent;
+  border: none;
 }
 
-.close:hover {
+.close:hover,
+.close:focus {
   color: var(--accent);
+  outline: none;
 }
 
 #modalSourceUrl {
@@ -266,8 +301,10 @@ body.dark-mode .modal-content {
   text-decoration: none;
 }
 
-#modalSourceUrl:hover {
+#modalSourceUrl:hover,
+#modalSourceUrl:focus {
   text-decoration: underline;
+  outline: none;
 }
 
 @media (max-width: 600px) {
