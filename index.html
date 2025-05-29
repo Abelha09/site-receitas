@@ -1,41 +1,51 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Site de Receitas Interativo e Responsivo" />
-  <meta name="keywords" content="receitas, culinária, cozinha, pratos, sobremesas" />
-  <meta name="author" content="Abelha09" />
-  <title>Receitas Deliciosas</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Site de Receitas Moderno</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <button class="toggle-dark-mode" id="toggleDarkMode">Modo Escuro</button>
-
   <header>
     <h1>Receitas Deliciosas</h1>
   </header>
 
-  <section class="controls">
-    <input type="text" id="searchInput" placeholder="Buscar receita..." />
-    <select id="categoryFilter">
-      <option value="">Todas as Categorias</option>
-      <option value="sobremesa">Sobremesas</option>
-      <option value="salgado">Salgados</option>
-      <option value="vegano">Vegano</option>
-    </select>
-  </section>
+  <button class="toggle-dark-mode" id="darkModeToggle">Modo Escuro</button>
 
-  <main id="recipesContainer">
-    <!-- Cards de receita serão inseridos aqui via JS -->
+  <main>
+    <div class="controls">
+      <input type="text" id="search" placeholder="Buscar receita..." aria-label="Buscar receita" />
+    </div>
+
+    <section id="recipes-container">
+      <article class="recipe-card">
+        <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=800&q=80" alt="Panqueca" />
+        <h2>Panqueca Americana</h2>
+        <p>Receita clássica de panqueca fofa para um café da manhã delicioso.</p>
+      </article>
+
+      <article class="recipe-card">
+        <img src="https://images.unsplash.com/photo-1512058564366-c9e8f94f3e58?auto=format&fit=crop&w=800&q=80" alt="Espaguete" />
+        <h2>Espaguete ao Molho Bolonhesa</h2>
+        <p>Macarrão com molho de carne e tomate, um clássico italiano.</p>
+      </article>
+
+      <article class="recipe-card">
+        <img src="https://images.unsplash.com/photo-1525755662778-989d0524087e?auto=format&fit=crop&w=800&q=80" alt="Salada" />
+        <h2>Salada Mediterrânea</h2>
+        <p>Salada fresca com tomates, pepino, azeitonas e queijo feta.</p>
+      </article>
+
+      <!-- Adicione mais receitas aqui -->
+    </section>
   </main>
 
   <footer class="footer">
-    <p>© 2025 Abelha 🐝. Todos os direitos reservados.</p>
+    <p>© 2025 Receitas Deliciosas. Todos os direitos reservados.</p>
   </footer>
 
-  <button id="scrollTopBtn" title="Voltar ao topo">↑</button>
-
-  <script src="script.js" defer></script>
+  <script src="script.js"></script>
 </body>
 </html>
+
